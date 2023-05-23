@@ -15,15 +15,16 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
+           
+           
             Persona persona = new Persona();
             persona.IngresarDatos();
 
 
 
         }
+       
 
-
-        //Log= new LoggerConfiguration(Write)
         public string nombre { get; set; }
         public int edad { get; set; }
         public bool genero { get; set; }
@@ -44,10 +45,13 @@ namespace ConsoleApp
             }else { 
                 Console.WriteLine("Hola " + nombre + ", " + edad + " años, género femenino"); 
             }
+            Loger("Se mostró todo los datos", true);
             Console.Read();
         }
         public void ParseInt(int edade)
-        { bool ok = false;
+        {
+            string msj;
+            bool ok = false;
             try
             {
                 do
@@ -61,48 +65,66 @@ namespace ConsoleApp
                     }
                 } while (ok);
                 edad = edade;
+                msj = "Se ingresó la Edad";
+                Loger(msj, true);
             }
             catch (IOException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
 
             }
             catch (OutOfMemoryException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (ArgumentNullException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (FormatException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
 
             catch (OverflowException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
 
         }
         public void ParseString(string str)
-        { bool ok= false;
+        {   
+            bool ok= false;
+            string msj;
             try
             {
                 do
@@ -116,25 +138,35 @@ namespace ConsoleApp
                     }
                 }while (ok);
                 nombre = str;
+                msj = "Se ingresó el nombre";
+                Loger(msj, true);
             }
             catch (IOException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (OutOfMemoryException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
 
@@ -144,41 +176,56 @@ namespace ConsoleApp
     
         public void Parsebool(bool b)
         {
+            string msj;
             try
             {
                 Console.WriteLine("Ingrese su género true=varon  false=mujer :");
 
                 b = bool.Parse(Console.ReadLine());
                 genero = b;
+                msj = "Se ingresó la el genero";
+                Loger(msj, true);
             }
             catch (ArgumentNullException e)
             {
-                Console.WriteLine("Ocurrio un Error:"+ e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (FormatException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (IOException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch(OutOfMemoryException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Ocurrio un Error:" + e.Message);
+                msj = "Ocurrio un Error:" + e.Message;
+                Console.WriteLine(msj);
+                Loger(msj, false);
                 errorok = true;
             }
         }
@@ -191,6 +238,25 @@ namespace ConsoleApp
                 Environment.Exit(0);
             }
         }
+        public void Loger(string msj, bool ok)
+        {
+            DateTime fecha = DateTime.Today;
+            string Fecha = fecha.ToString("d");
+            string[] fect = Fecha.Split('/');
+            Fecha = (fect[2] + fect[1] + fect[0]);
+            Log.Logger = new LoggerConfiguration().WriteTo.File("Log_" + Fecha + ".txt").CreateLogger();
+            if (ok)
+            {
+                Log.Information(msj);
+            }
+            else
+            {
+                Log.Error(msj);
+            }
+            Log.CloseAndFlush();
+        }
     }
+
+   
 
 }
