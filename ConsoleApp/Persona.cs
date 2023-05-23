@@ -110,7 +110,7 @@ namespace ConsoleApp
                     ok = false;
                     Console.WriteLine("Ingrese su nombre (Máximo 10 caracteres) :");
                     str = Console.ReadLine();
-                    if(str.Length>10)
+                    if(str.Length>10 || str.Length<1)
                     {
                         ok= true;
                     }
