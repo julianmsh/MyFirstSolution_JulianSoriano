@@ -1,10 +1,6 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
@@ -54,10 +50,13 @@ namespace ConsoleApp
             bool ok = false;
             try
             {
+                msj = "Ingreso de edad";
+                Loger(msj, true);
                 do
                 {
                     ok = false;
                     Console.WriteLine("Ingrese su edad (Del 0 al 99) :");
+                    
                     edade = int.Parse(Console.ReadLine());
                     if(edade<0 || edade > 99)
                     {
@@ -127,6 +126,8 @@ namespace ConsoleApp
             string msj;
             try
             {
+                msj = "Ingreso de Nombre";
+                Loger(msj, true);
                 do
                 {
                     ok = false;
@@ -179,11 +180,13 @@ namespace ConsoleApp
             string msj;
             try
             {
+                msj = "Ingreso de género";
+                Loger(msj, true);
                 Console.WriteLine("Ingrese su género true=varon  false=mujer :");
 
                 b = bool.Parse(Console.ReadLine());
                 genero = b;
-                msj = "Se ingresó la el genero";
+                msj = "Se ingresó el genero";
                 Loger(msj, true);
             }
             catch (ArgumentNullException e)
@@ -244,7 +247,7 @@ namespace ConsoleApp
             string Fecha = fecha.ToString("d");
             string[] fect = Fecha.Split('/');
             Fecha = (fect[2] + fect[1] + fect[0]);
-            Log.Logger = new LoggerConfiguration().WriteTo.File("Log_" + Fecha + ".txt").CreateLogger();
+            Log.Logger = new LoggerConfiguration().WriteTo.File("Logs/Log_" + Fecha + ".txt").CreateLogger();
             if (ok)
             {
                 Log.Information(msj);
